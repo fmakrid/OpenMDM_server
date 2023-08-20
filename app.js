@@ -1,13 +1,22 @@
 const express = require("express");
 const app = express();
-const port = 8081;
-const cors = require("cors"); // Import the cors package
+// const mysql = require("mysql2");
+const cors = require("cors");
+const fs = require("fs");
+const https = require("https");
 
 app.use(cors());
 
-app.use(express.json());
+const port = 8081;
 
-// Middleware to parse JSON requests
+const options = {
+	key: fs.readFileSync(
+		"/etc/letsencrypt/live/covid19.philippos-makridis.dev/privkey.pem"
+	),
+	cert: fs.readFileSync(
+		"/etc/letsencrypt/live/covid19.philippos-makridis.dev/fullchain.pem"
+	),
+};
 
 // Define routes for your REST API
 app.get("/openmdm/getDevices", (req, res) => {
@@ -49,6 +58,9 @@ app.delete("/openmdm/deleteDevice", (req, res) => {
 			"Request received successfully, the API is under construction.",
 	});
 });
+
+// Create HTTPS server
+const server = https.createServer(options, app);
 
 // Start the server
 app.listen(port, () => {
