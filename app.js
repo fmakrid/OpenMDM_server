@@ -10,7 +10,7 @@ app.use(express.json());
 // Middleware to parse JSON requests
 
 // Define routes for your REST API
-app.get("/getDevices", (req, res) => {
+app.get("/openmdm/getDevices", (req, res) => {
 	res.json({
 		message:
 			"This is the getDevices endpoint." +
@@ -18,7 +18,7 @@ app.get("/getDevices", (req, res) => {
 	});
 });
 
-app.get("/getData", (req, res) => {
+app.get("/openmdm/getData", (req, res) => {
 	res.json({
 		message:
 			"This is the getData endpoint." +
@@ -26,7 +26,7 @@ app.get("/getData", (req, res) => {
 	});
 });
 
-app.post("/addDevice", (req, res) => {
+app.post("/openmdm/addDevice", (req, res) => {
 	res.json({
 		message:
 			"This is the addDevice endpoint." +
@@ -34,7 +34,7 @@ app.post("/addDevice", (req, res) => {
 	});
 });
 
-app.put("/updateDevice", (req, res) => {
+app.put("/openmdm/updateDevice", (req, res) => {
 	res.json({
 		message:
 			"This is the updateDevice endpoint." +
@@ -42,7 +42,7 @@ app.put("/updateDevice", (req, res) => {
 	});
 });
 
-app.delete("/deleteDevice", (req, res) => {
+app.delete("/openmdm/deleteDevice", (req, res) => {
 	res.json({
 		message:
 			"This is the deleteDevice endpoint." +
