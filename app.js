@@ -63,6 +63,6 @@ app.delete("/openmdm/deleteDevice", (req, res) => {
 const server = https.createServer(options, app);
 
 // Start the server
-server.listen(port, () => {
-	console.log(`Server listening at port ${port}`);
+server.listen(port, '0.0.0.0', () => {
+    console.log(`Server listening at port ${port}`);
 });
