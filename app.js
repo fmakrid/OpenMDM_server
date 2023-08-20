@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = 8080;
+const cors = require("cors"); // Import the cors package
+
+app.use(cors());
+
+app.use(express.json());
 
 // Middleware to parse JSON requests
-app.use(express.json());
 
 // Define routes for your REST API
 app.get("/getDevices", (req, res) => {
@@ -48,5 +52,5 @@ app.delete("/deleteDevice", (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-	console.log(`Server listening at http://localhost:${port}/`);
+	console.log(`Server listening at port ${port}`);
 });
