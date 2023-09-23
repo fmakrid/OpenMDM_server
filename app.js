@@ -4,20 +4,20 @@ const cors = require("cors");
 const fs = require("fs");
 const databaseController = require('./databaseController');
 
-// const https = require("https");
+const https = require("https");
 
 app.use(cors());
 
 const port = 8081;
 
-// const options = {
-// 	key: fs.readFileSync(
-// 		"/etc/letsencrypt/live/covid19.philippos-makridis.dev/privkey.pem"
-// 	),
-// 	cert: fs.readFileSync(
-// 		"/etc/letsencrypt/live/covid19.philippos-makridis.dev/fullchain.pem"
-// 	),
-// };
+const options = {
+	key: fs.readFileSync(
+		"/etc/letsencrypt/live/covid19.philippos-makridis.dev/privkey.pem"
+	),
+	cert: fs.readFileSync(
+		"/etc/letsencrypt/live/covid19.philippos-makridis.dev/fullchain.pem"
+	),
+};
 
 // Define routes for your REST API
 app.get('/openmdm/getDevices', async (req, res) => {
@@ -78,7 +78,7 @@ app.delete("/openmdm/deleteDevice", async (req, res) => {
 
 
 // Create HTTPS server
-// const server = https.createServer(options, app);
+const server = https.createServer(options, app);
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
